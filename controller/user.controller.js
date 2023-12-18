@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
 import newUserService from "../service/user.service.js";
+import databaseService from "../service/database.service.js";
 
 export const registerController = async (req, res, next) => {
   const access_token = await newUserService.register(req.body);
