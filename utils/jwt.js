@@ -6,7 +6,7 @@ config();
 export const signToken = ({ payload }) => {
   return new Promise((resolve, reject) => {
     jwt.sign(
-      { payload },
+      { user_id: payload},
       process.env.PRIVATE_KEY,
       { algorithm: "HS256" },
       (err, token) => {
@@ -21,7 +21,7 @@ export const signToken = ({ payload }) => {
 
 export const verifyToken = ({ token, secretOrPublicKey }) => {
   return new Promise((resolve, reject) => {
-    jwt.verify(token, "shhhhh", (err, decoded) => {
+    jwt.verify(token, secretOrPublicKey, (err, decoded) => {
       if (err) {
         reject(err);
       }

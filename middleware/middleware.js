@@ -58,9 +58,9 @@ export const loginValidator = validator(
             email: value,
           });
           if (isEmailExsit) {
-            throw new Error("Email already exist");
+            return true;
           }
-          return true;
+          throw new Error("your email is invalid");
         },
       },
     },
@@ -101,7 +101,8 @@ export const accessTokenValidator = validator(
               token: access_token,
               secretOrPublicKey: process.env.PRIVATE_KEY,
             });
-            req.deconde_authorization = decode_authorization;
+            console.log(decode_authorization);
+            req.decode_authorization = decode_authorization;
             return true;
           },
         },

@@ -1,4 +1,6 @@
+import { ObjectId } from "mongodb";
 import newUserService from "../service/user.service.js";
+import databaseService from "../service/database.service.js";
 
 export const registerController = async (req, res, next) => {
   const access_token = await newUserService.register(req.body);
@@ -19,7 +21,8 @@ export const loginController = async (req, res, next) => {
 };
 
 export const getMeControler = async (req, res, next) => {
-  const { user_id } = req.decode.authorization;
+  const { user_id } = req.decode_authorization;
+  console.log(user_id);
   if (user_id) {
     const user = await databaseService.new_database.findOne(
       {
