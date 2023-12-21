@@ -21,6 +21,9 @@ class DatabaseService {
   get new_database() {
     return this.db.collection("new_database");
   }
+  get post(){
+    return this.db.collection("post");
+  }
 }
 const databaseService = new DatabaseService();
 export default databaseService;

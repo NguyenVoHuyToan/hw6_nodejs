@@ -3,6 +3,7 @@ import userRouter from "./routes/userRoute.js";
 import databaseService from "./service/database.service.js";
 import {config} from "dotenv";
 import mediaRoute from "./routes/mediaRoute.js";
+import postRoute from "./routes/post.route.js";
 
 config()
 
@@ -15,7 +16,7 @@ app.use(express.json());
 
 app.use("/user",userRouter);
 app.use("/media", mediaRoute);
-
+app.use("/post",postRoute)
 app.use((err, req, res, next) => {
   return res.json({err})
 })
