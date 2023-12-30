@@ -24,6 +24,9 @@ class DatabaseService {
   get post(){
     return this.db.collection("post");
   }
+  get hashtags(){
+    return this.db.collection("hashtags")
+  }
 }
 const databaseService = new DatabaseService();
 export default databaseService;
